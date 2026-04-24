@@ -8,16 +8,38 @@
     <h1 class="text-2xl font-bold mb-4">내 기술 스택</h1>
 
     <div class="flex gap-2 flex-wrap">
-        {% for skill in data %}
-            {% if skill == "Python" %}
-                <span class="bg-blue-500 text-white px-3 py-1 rounded-full">{{ skill }}</span>
-            {% elif skill == "HTML" %}
-                <span class="bg-orange-500 text-white px-3 py-1 rounded-full">{{ skill }}</span>
-            {% elif skill == "CSS" %}
-                <span class="bg-indigo-500 text-white px-3 py-1 rounded-full">{{ skill }}</span>
+        {% for skill in skills %}
+            {% if skill|lower == "python" %}
+                <span class="bg-gray-400 text-white px-3 py-1 rounded-full">
+                    {{ skill|lower }}
+                </span>
+
+            {% elif skill|lower == "sql" %}
+                <span class="bg-purple-500 text-white px-3 py-1 rounded-full">
+                    {{ skill|lower }}
+                </span>
+
+            {% elif skill|lower == "html" %}
+                <span class="bg-orange-500 text-white px-3 py-1 rounded-full">
+                    {{ skill|lower }}
+                </span>
+
+            {% elif skill|lower == "bash" %}
+                <span class="bg-green-500 text-white px-3 py-1 rounded-full">
+                    {{ skill|lower }}
+                </span>
+
             {% else %}
-                <span class="bg-gray-300 px-3 py-1 rounded-full">{{ skill }}</span>
+                <span class="bg-black text-white px-3 py-1 rounded-full">
+                    {{ skill|lower }}
+                </span>
             {% endif %}
+        {% endfor %}
+    </div>
+    <div>
+        <h2 class="mt9 text-xl font-bold">입력한 데이터</h2>
+        {% for item in messages %}
+            <div class="bg-gray-200 p-2 m-2 rounded">{{ item }}</div>
         {% endfor %}
     </div>
     <form action="/send" method="POST" class="mt-8">
