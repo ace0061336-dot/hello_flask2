@@ -24,9 +24,11 @@ def send():
     level = request.form.get('level')
     status = request.form.get('status')
 
-    messages.append(skill + " / " + level + " / " + status)
+    if skill:
+        messages.append(skill + " / " + level + " / " + status)
 
     return redirect('/')
+
 
 
 
